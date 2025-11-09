@@ -1,6 +1,10 @@
 package com.example.patterns.behavioral.observer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class KitchenDisplay implements OrderObserver {
+    private static final Logger logger = LoggerFactory.getLogger(KitchenDisplay.class);
     private int displayNumber;
 
     public KitchenDisplay(int displayNumber) {
@@ -9,10 +13,10 @@ public class KitchenDisplay implements OrderObserver {
 
     @Override
     public void update(String orderId, String status, String message) {
-        System.out.println("[PANTALLA COCINA #" + displayNumber + "]");
-        System.out.println("  >>> Orden " + orderId + ": " + status);
+        logger.info("[PANTALLA COCINA #{}]", displayNumber);
+        logger.info("  >>> Orden {}: {}", orderId, status);
         if (status.equals("CONFIRMADA")) {
-            System.out.println("  >>> Iniciar preparación");
+            logger.info("  >>> Iniciar preparación");
         }
     }
 

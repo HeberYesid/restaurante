@@ -331,17 +331,14 @@ class RestaurantE2ETest {
         }
 
         @Test
-        @DisplayName("Manejar orden sin items")
+        @DisplayName("Manejar orden sin items debe lanzar excepción")
         void testHandleEmptyOrder() {
-            // Act
-            Menu emptyMenu = new Menu.Builder()
-                .name("Orden Vacía")
-                .build();
-
-            // Assert
-            assertEquals(0.0, emptyMenu.getTotalPrice());
-            assertTrue(emptyMenu.getAppetizers().isEmpty());
-            assertTrue(emptyMenu.getMainCourses().isEmpty());
+            // Act & Assert
+            assertThrows(IllegalStateException.class, () -> {
+                new Menu.Builder()
+                    .name("Orden Vacía")
+                    .build();
+            }, "Debe lanzar IllegalStateException cuando se intenta crear un menú vacío");
         }
     }
 

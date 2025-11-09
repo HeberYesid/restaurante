@@ -10,6 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Sistema de configuración del restaurante
  */
 public class RestaurantConfig {
+    // Constantes de configuración por defecto
+    private static final double DEFAULT_TAX_RATE = 0.16; // 16% IVA
+    private static final int DEFAULT_MAX_TABLES = 20;
+    private static final int DEFAULT_OPENING_HOUR = 11;
+    private static final int DEFAULT_CLOSING_HOUR = 23;
+    private static final int INITIAL_ORDER_NUMBER = 1000;
+    
     private static volatile RestaurantConfig instance;
     private static final Object lock = new Object();
     
@@ -26,15 +33,15 @@ public class RestaurantConfig {
         // Configuración por defecto
         this.restaurantName = "La Cocina del Patrón";
         this.address = "Av. Principal 123";
-        this.maxTables = 20;
-        this.openingTime = LocalDateTime.now().withHour(11).withMinute(0);
-        this.closingTime = LocalDateTime.now().withHour(23).withMinute(0);
+        this.maxTables = DEFAULT_MAX_TABLES;
+        this.openingTime = LocalDateTime.now().withHour(DEFAULT_OPENING_HOUR).withMinute(0);
+        this.closingTime = LocalDateTime.now().withHour(DEFAULT_CLOSING_HOUR).withMinute(0);
         this.paymentMethods = new ArrayList<>();
         this.paymentMethods.add("Efectivo");
         this.paymentMethods.add("Tarjeta de Crédito");
         this.paymentMethods.add("Tarjeta de Débito");
-        this.taxRate = 0.16; // 16% IVA
-        this.orderCounter = new AtomicInteger(1000);
+        this.taxRate = DEFAULT_TAX_RATE;
+        this.orderCounter = new AtomicInteger(INITIAL_ORDER_NUMBER);
     }
 
     // Double-checked locking
@@ -79,19 +86,19 @@ public class RestaurantConfig {
     }
 
     public LocalDateTime getOpeningTime() {
-        return openingTime;
+        return LocalDateTime.from(openingTime);
     }
 
     public void setOpeningTime(LocalDateTime openingTime) {
-        this.openingTime = openingTime;
+        this.openingTime = LocalDateTime.from(openingTime);
     }
 
     public LocalDateTime getClosingTime() {
-        return closingTime;
+        return LocalDateTime.from(closingTime);
     }
 
     public void setClosingTime(LocalDateTime closingTime) {
-        this.closingTime = closingTime;
+        this.closingTime = LocalDateTime.from(closingTime);
     }
 
     public List<String> getPaymentMethods() {

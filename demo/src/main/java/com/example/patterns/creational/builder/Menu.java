@@ -160,6 +160,13 @@ public class Menu {
         }
 
         public Menu build() {
+            // Validación: Al menos debe tener algún item
+            if (appetizers.isEmpty() && mainCourses.isEmpty() && 
+                desserts.isEmpty() && beverages.isEmpty()) {
+                throw new IllegalStateException(
+                    "Menu must contain at least one item (appetizer, main course, dessert, or beverage)"
+                );
+            }
             return new Menu(this);
         }
     }

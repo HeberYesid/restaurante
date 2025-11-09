@@ -19,23 +19,14 @@ class MenuBuilderCorrectTest {
     class BasicBuilderTests {
 
         @Test
-        @DisplayName("Debe construir menú vacío")
+        @DisplayName("Debe lanzar excepción si el menú está completamente vacío")
         void testBuildEmptyMenu() {
-            // Act
-            Menu menu = new Menu.Builder()
-                .name("Menú Vacío")
-                .build();
-
-            // Assert
-            assertAll("Empty menu validations",
-                () -> assertNotNull(menu),
-                () -> assertEquals("Menú Vacío", menu.getName()),
-                () -> assertThat(menu.getAppetizers()).isEmpty(),
-                () -> assertThat(menu.getMainCourses()).isEmpty(),
-                () -> assertThat(menu.getDesserts()).isEmpty(),
-                () -> assertThat(menu.getBeverages()).isEmpty(),
-                () -> assertEquals(0.0, menu.getTotalPrice())
-            );
+            // Arrange & Act & Assert
+            assertThrows(IllegalStateException.class, () -> {
+                new Menu.Builder()
+                    .name("Menú Vacío")
+                    .build();
+            }, "Debe lanzar IllegalStateException cuando el menú no tiene items");
         }
 
         @Test
@@ -240,6 +231,7 @@ class MenuBuilderCorrectTest {
             // Act
             Menu menu = new Menu.Builder()
                 .name(null)
+                .addAppetizer("Test", 1.0)
                 .build();
 
             // Assert
@@ -265,6 +257,7 @@ class MenuBuilderCorrectTest {
             // Act
             Menu menu = new Menu.Builder()
                 .name("Test")
+                .addMainCourse("Plato", 5.0)
                 .specialInstructions("")
                 .build();
 
@@ -278,12 +271,14 @@ class MenuBuilderCorrectTest {
             // Act
             Menu veganMenu = new Menu.Builder()
                 .name("Vegano")
+                .addMainCourse("Ensalada", 10.0)
                 .vegetarian(true)
                 .glutenFree(true)
                 .build();
 
             Menu normalMenu = new Menu.Builder()
                 .name("Normal")
+                .addMainCourse("Hamburguesa", 12.0)
                 .vegetarian(false)
                 .glutenFree(false)
                 .build();
