@@ -36,6 +36,7 @@ import java.util.Scanner;
  */
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
+    private static final String APPLY_SECTION_HEADER = ">>> CÓMO SE APLICA:";
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -433,9 +434,9 @@ public class Main {
         double subtotal = 50.00;
         double tax = config.calculateTax(subtotal);
         double total = config.calculateTotal(subtotal);
-        logger.info(String.format("Subtotal: $%.2f", subtotal).toString());
-        logger.info(String.format("Impuesto: $%.2f", tax).toString());
-        logger.info(String.format("Total: $%.2f", total).toString());
+        logger.info(String.format("Subtotal: $%.2f", subtotal));
+        logger.info(String.format("Impuesto: $%.2f", tax));
+        logger.info(String.format("Total: $%.2f", total));
 
         // Demostrar que es la misma instancia
         RestaurantConfig config2 = RestaurantConfig.getInstance();
