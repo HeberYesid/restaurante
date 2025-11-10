@@ -5,9 +5,10 @@ import java.util.Map;
 
 /**
  * Patrón Prototype
- * Representa una receta que puede ser clonada
+ * Representa una receta que puede ser clonada usando copy constructor
+ * en lugar de Cloneable (mejor práctica según Joshua Bloch - Effective Java)
  */
-public class Recipe implements Cloneable {
+public class Recipe {
     private String name;
     private String category;
     private int preparationTime; // minutos
@@ -22,8 +23,8 @@ public class Recipe implements Cloneable {
         this.ingredients = new HashMap<>();
     }
 
-    // Constructor de copia profunda
-    private Recipe(Recipe recipe) {
+    // Constructor de copia profunda (Copy Constructor)
+    public Recipe(Recipe recipe) {
         this.name = recipe.name;
         this.category = recipe.category;
         this.preparationTime = recipe.preparationTime;
@@ -33,13 +34,16 @@ public class Recipe implements Cloneable {
         this.instructions = recipe.instructions;
     }
 
-    @Override
-    public Recipe clone() {
+    /**
+     * Método de copia que usa el copy constructor
+     * Mantiene compatibilidad con código existente
+     */
+    public Recipe copy() {
         return new Recipe(this);
     }
 
     public Recipe cloneWithModifications(String newName, int newServings) {
-        Recipe cloned = clone();
+        Recipe cloned = copy();
         cloned.name = newName;
         cloned.servings = newServings;
         return cloned;

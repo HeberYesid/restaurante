@@ -294,6 +294,12 @@ public class Main {
         printPatternHeader("FACTORY METHOD", "Creacional");
         logger.info("Permite crear objetos sin especificar la clase exacta.");
         logger.info("Contexto: Diferentes tipos de restaurantes crean diferentes platos.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- La clase abstracta 'Restaurant' define el método orderDish()");
+        logger.info("- Cada subclase (ItalianRestaurant, PastaRestaurant, HealthyRestaurant)");
+        logger.info("  implementa createDish() retornando un tipo específico de plato");
+        logger.info("- El cliente usa la interfaz Restaurant sin conocer la clase concreta\n");
 
         Restaurant italian = new ItalianRestaurant();
         Restaurant pasta = new PastaRestaurant();
@@ -310,6 +316,12 @@ public class Main {
         printPatternHeader("ABSTRACT FACTORY", "Creacional");
         logger.info("Crea familias de objetos relacionados sin especificar sus clases concretas.");
         logger.info("Contexto: Fábricas de ingredientes premium y económicos.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- IngredientFactory es la interfaz abstracta con métodos create*()");
+        logger.info("- PremiumIngredientFactory crea ingredientes de alta calidad");
+        logger.info("- BudgetIngredientFactory crea ingredientes económicos");
+        logger.info("- Garantiza que los ingredientes de una familia sean compatibles\n");
 
         IngredientFactory premiumFactory = new PremiumIngredientFactory();
         IngredientFactory budgetFactory = new BudgetIngredientFactory();
@@ -339,6 +351,12 @@ public class Main {
         printPatternHeader("BUILDER", "Creacional");
         logger.info("Construye objetos complejos paso a paso.");
         logger.info("Contexto: Construcción de menús personalizados.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- Menu.Builder permite construir un menú con métodos encadenados");
+        logger.info("- Cada método retorna 'this' para permitir fluent interface");
+        logger.info("- MenuDirector encapsula recetas predefinidas (menú familiar)");
+        logger.info("- El método build() valida y crea el objeto Menu final\n");
 
         MenuDirector director = new MenuDirector();
 
@@ -367,6 +385,12 @@ public class Main {
         printPatternHeader("PROTOTYPE", "Creacional");
         logger.info("Clona objetos existentes sin depender de sus clases.");
         logger.info("Contexto: Clonación de recetas con modificaciones.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- Recipe implementa Cloneable y sobrescribe clone()");
+        logger.info("- RecipeRegistry almacena prototipos de recetas base");
+        logger.info("- cloneWithModifications() crea copias y las personaliza");
+        logger.info("- Evita crear recetas desde cero, solo modifica las existentes\n");
 
         RecipeRegistry registry = new RecipeRegistry();
         registry.initializeDefaultRecipes();
@@ -390,6 +414,12 @@ public class Main {
         printPatternHeader("SINGLETON", "Creacional");
         logger.info("Garantiza una única instancia de una clase.");
         logger.info("Contexto: Configuración global del restaurante.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- RestaurantConfig tiene constructor privado");
+        logger.info("- getInstance() retorna siempre la misma instancia (thread-safe)");
+        logger.info("- Usa inicialización temprana (eager initialization)");
+        logger.info("- Centraliza configuración: nombre, impuesto, números de orden\n");
 
         RestaurantConfig config = RestaurantConfig.getInstance();
         logger.info(config.toString());
@@ -421,6 +451,12 @@ public class Main {
         printPatternHeader("ADAPTER", "Estructural");
         logger.info("Permite que interfaces incompatibles trabajen juntas.");
         logger.info("Contexto: Adaptar sistema legacy de pagos a interfaz moderna.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- LegacyPOSSystem tiene métodos validateCard() y chargeCard()");
+        logger.info("- ModernPaymentProcessor espera validatePaymentMethod() y processPayment()");
+        logger.info("- PaymentAdapter implementa ModernPaymentProcessor");
+        logger.info("- Internamente convierte las llamadas al formato del sistema legacy\n");
 
         LegacyPOSSystem legacySystem = new LegacyPOSSystem();
         ModernPaymentProcessor processor = new PaymentAdapter(legacySystem);
@@ -442,6 +478,12 @@ public class Main {
         printPatternHeader("BRIDGE", "Estructural");
         logger.info("Separa abstracción de implementación.");
         logger.info("Contexto: Notificaciones del restaurante con diferentes métodos de envío.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- Abstracción: Notification (tipos: Order, Reservation, Promotion)");
+        logger.info("- Implementación: NotificationSender (Email, SMS, Push)");
+        logger.info("- Ambas jerarquías evolucionan independientemente");
+        logger.info("- Puedes combinar cualquier tipo de notificación con cualquier canal\n");
 
         // Crear diferentes implementaciones
         NotificationSender email = new EmailSender();
@@ -472,6 +514,12 @@ public class Main {
         printPatternHeader("COMPOSITE", "Estructural");
         logger.info("Compone objetos en estructuras de árbol.");
         logger.info("Contexto: Estructura jerárquica del menú del restaurante.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- MenuComponent es la interfaz común para hojas y compuestos");
+        logger.info("- MenuItem (hoja) representa un plato individual");
+        logger.info("- MenuCategory (compuesto) contiene MenuItems u otras categorías");
+        logger.info("- El cliente trata uniformemente hojas y compuestos\n");
 
         // Crear menú completo
         MenuCategory mainMenu = new MenuCategory("Menú Principal", "Nuestro delicioso menú");
@@ -511,6 +559,12 @@ public class Main {
         printPatternHeader("DECORATOR", "Estructural");
         logger.info("Agrega funcionalidad a objetos dinámicamente.");
         logger.info("Contexto: Personalización de bebidas con extras.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- Beverage es el componente base (Coffee, Tea)");
+        logger.info("- BeverageDecorator es la clase abstracta decoradora");
+        logger.info("- Decoradores concretos (Milk, Sugar, Caramel) envuelven Beverage");
+        logger.info("- Cada decorador agrega costo y modifica la descripción\n");
 
         // Café básico
         Beverage beverage1 = new Coffee();
@@ -644,6 +698,12 @@ public class Main {
         printPatternHeader("CHAIN OF RESPONSIBILITY", "Comportamiento");
         logger.info("Pasa solicitudes a través de una cadena de manejadores.");
         logger.info("Contexto: Sistema de descuentos con múltiples criterios.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- DiscountHandler es la clase abstracta con setNext()");
+        logger.info("- Handlers: VIP, Loyalty, BulkOrder, Default (en ese orden)");
+        logger.info("- Cada handler decide si procesa o pasa al siguiente");
+        logger.info("- La solicitud viaja por la cadena hasta ser procesada\n");
 
         // Configurar cadena
         DiscountHandler vipHandler = new VIPDiscountHandler();
@@ -683,6 +743,12 @@ public class Main {
         printPatternHeader("COMMAND", "Comportamiento");
         logger.info("Encapsula solicitudes como objetos.");
         logger.info("Contexto: Sistema de órdenes con soporte de undo.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- Command es la interfaz con execute() y undo()");
+        logger.info("- Comandos concretos: AddItemCommand, RemoveItemCommand");
+        logger.info("- KitchenOrder (Invoker) ejecuta y almacena comandos");
+        logger.info("- Permite deshacer operaciones con executeUndo()\n");
 
         KitchenOrder order = new KitchenOrder();
         Waiter waiter = new Waiter();
@@ -810,6 +876,12 @@ public class Main {
         printPatternHeader("OBSERVER", "Comportamiento");
         logger.info("Notifica cambios a múltiples observadores.");
         logger.info("Contexto: Tracking de órdenes con múltiples suscriptores.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- OrderTracker (sujeto) mantiene lista de observadores");
+        logger.info("- Observer: CustomerNotifier, KitchenDisplay, AnalyticsSystem");
+        logger.info("- Al cambiar el estado con updateStatus(), notifica a todos");
+        logger.info("- Cada observador reacciona según su responsabilidad\n");
 
         OrderTracker tracker = new OrderTracker("ORD-5001");
 
@@ -844,6 +916,12 @@ public class Main {
         printPatternHeader("STATE", "Comportamiento");
         logger.info("Cambia comportamiento según el estado interno.");
         logger.info("Contexto: Estados de una mesa del restaurante.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- TableState es la interfaz de estado con métodos de transición");
+        logger.info("- Estados concretos: AvailableState, ReservedState, OccupiedState, DirtyState");
+        logger.info("- TableContext delega operaciones al estado actual");
+        logger.info("- Cada estado define qué transiciones son válidas\n");
 
         TableContext table = new TableContext(10);
 
@@ -875,6 +953,12 @@ public class Main {
         printPatternHeader("STRATEGY", "Comportamiento");
         logger.info("Define familia de algoritmos intercambiables.");
         logger.info("Contexto: Diferentes estrategias de precios.\n");
+        
+        logger.info(">>> CÓMO SE APLICA:");
+        logger.info("- PricingStrategy es la interfaz de estrategia");
+        logger.info("- Estrategias concretas: Regular, HappyHour, Weekend, Member");
+        logger.info("- MenuItem contiene una referencia a PricingStrategy");
+        logger.info("- Se puede cambiar la estrategia en tiempo de ejecución\n");
 
         com.example.patterns.behavioral.strategy.MenuItem item = 
             new com.example.patterns.behavioral.strategy.MenuItem("Hamburguesa Deluxe", 15.00);

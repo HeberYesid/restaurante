@@ -15,7 +15,7 @@ public class RecipeRegistry {
 
     public Recipe getRecipe(String key) {
         Recipe prototype = recipes.get(key);
-        return prototype != null ? prototype.clone() : null;
+        return prototype != null ? prototype.copy() : null;
     }
 
     public void initializeDefaultRecipes() {
