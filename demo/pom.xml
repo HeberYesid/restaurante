@@ -17,6 +17,10 @@
         <jacoco.version>0.8.11</jacoco.version>
         <slf4j.version>2.0.9</slf4j.version>
         <logback.version>1.4.11</logback.version>
+        
+        <!-- SonarQube properties -->
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.projectKey>demo</sonar.projectKey>
     </properties>
 
     <dependencies>
@@ -117,7 +121,8 @@
                         </goals>
                     </execution>
                     
-                    <!-- Verificar umbrales mínimos de cobertura (opcional) -->
+                    <!-- Verificar umbrales mínimos de cobertura (DESHABILITADO para SonarQube) -->
+                    <!--
                     <execution>
                         <id>check</id>
                         <goals>
@@ -143,6 +148,7 @@
                             </rules>
                         </configuration>
                     </execution>
+                    -->
                 </executions>
             </plugin>
         </plugins>

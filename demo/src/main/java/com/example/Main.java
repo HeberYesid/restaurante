@@ -25,6 +25,9 @@ import com.example.patterns.behavioral.strategy.*;
 import com.example.patterns.behavioral.templatemethod.*;
 import com.example.patterns.behavioral.visitor.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 /**
@@ -32,13 +35,14 @@ import java.util.Scanner;
  * en el contexto de un sistema de restaurante
  */
 public class Main {
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("╔═══════════════════════════════════════════════════════╗");
-        System.out.println("║   SISTEMA DE RESTAURANTE - PATRONES DE DISEÑO       ║");
-        System.out.println("║   Demostración de 23 Patrones de Diseño GoF         ║");
-        System.out.println("╚═══════════════════════════════════════════════════════╝\n");
+        logger.info("╔═══════════════════════════════════════════════════════╗");
+        logger.info("║   SISTEMA DE RESTAURANTE - PATRONES DE DISEÑO       ║");
+        logger.info("║   Demostración de 23 Patrones de Diseño GoF         ║");
+        logger.info("╚═══════════════════════════════════════════════════════╝\n");
 
         boolean running = true;
         while (running) {
@@ -59,11 +63,11 @@ public class Main {
                     showAllPatterns();
                     break;
                 case 0:
-                    System.out.println("\n¡Gracias por usar el sistema! Hasta pronto.");
+                    logger.info("\n¡Gracias por usar el sistema! Hasta pronto.");
                     running = false;
                     break;
                 default:
-                    System.out.println("\nOpción inválida. Intente nuevamente.");
+                    logger.info("\nOpción inválida. Intente nuevamente.");
             }
         }
         
@@ -71,30 +75,32 @@ public class Main {
     }
 
     private static void showMainMenu() {
-        System.out.println("\n" + "=".repeat(60));
-        System.out.println("                    MENÚ PRINCIPAL");
-        System.out.println("=".repeat(60));
-        System.out.println("1. Patrones Creacionales");
-        System.out.println("2. Patrones Estructurales");
-        System.out.println("3. Patrones de Comportamiento");
-        System.out.println("4. Demostrar TODOS los patrones");
-        System.out.println("0. Salir");
-        System.out.println("=".repeat(60));
-        System.out.print("Seleccione una opción: ");
+        String separator = "=".repeat(60);
+        logger.info("\n{}", separator);
+        logger.info("                    MENÚ PRINCIPAL");
+        logger.info(separator);
+        logger.info("1. Patrones Creacionales");
+        logger.info("2. Patrones Estructurales");
+        logger.info("3. Patrones de Comportamiento");
+        logger.info("4. Demostrar TODOS los patrones");
+        logger.info("0. Salir");
+        logger.info(separator);
+        logger.info("Seleccione una opción: ");
     }
 
     private static void showCreationalPatterns() {
-        System.out.println("\n" + "─".repeat(60));
-        System.out.println("              PATRONES CREACIONALES");
-        System.out.println("─".repeat(60));
-        System.out.println("1. Factory Method");
-        System.out.println("2. Abstract Factory");
-        System.out.println("3. Builder");
-        System.out.println("4. Prototype");
-        System.out.println("5. Singleton");
-        System.out.println("0. Volver");
-        System.out.println("─".repeat(60));
-        System.out.print("Seleccione un patrón: ");
+        String separator = "─".repeat(60);
+        logger.info("\n{}", separator);
+        logger.info("              PATRONES CREACIONALES");
+        logger.info(separator);
+        logger.info("1. Factory Method");
+        logger.info("2. Abstract Factory");
+        logger.info("3. Builder");
+        logger.info("4. Prototype");
+        logger.info("5. Singleton");
+        logger.info("0. Volver");
+        logger.info(separator);
+        logger.info("Seleccione un patrón: ");
 
         int choice = getIntInput();
         switch (choice) {
@@ -117,19 +123,20 @@ public class Main {
     }
 
     private static void showStructuralPatterns() {
-        System.out.println("\n" + "─".repeat(60));
-        System.out.println("              PATRONES ESTRUCTURALES");
-        System.out.println("─".repeat(60));
-        System.out.println("1. Adapter");
-        System.out.println("2. Bridge");
-        System.out.println("3. Composite");
-        System.out.println("4. Decorator");
-        System.out.println("5. Facade");
-        System.out.println("6. Flyweight");
-        System.out.println("7. Proxy");
-        System.out.println("0. Volver");
-        System.out.println("─".repeat(60));
-        System.out.print("Seleccione un patrón: ");
+        String separator = "─".repeat(60);
+        logger.info("\n{}", separator);
+        logger.info("              PATRONES ESTRUCTURALES");
+        logger.info(separator);
+        logger.info("1. Adapter");
+        logger.info("2. Bridge");
+        logger.info("3. Composite");
+        logger.info("4. Decorator");
+        logger.info("5. Facade");
+        logger.info("6. Flyweight");
+        logger.info("7. Proxy");
+        logger.info("0. Volver");
+        logger.info(separator);
+        logger.info("Seleccione un patrón: ");
 
         int choice = getIntInput();
         switch (choice) {
@@ -158,22 +165,23 @@ public class Main {
     }
 
     private static void showBehavioralPatterns() {
-        System.out.println("\n" + "─".repeat(60));
-        System.out.println("           PATRONES DE COMPORTAMIENTO");
-        System.out.println("─".repeat(60));
-        System.out.println("1. Chain of Responsibility");
-        System.out.println("2. Command");
-        System.out.println("3. Iterator");
-        System.out.println("4. Mediator");
-        System.out.println("5. Memento");
-        System.out.println("6. Observer");
-        System.out.println("7. State");
-        System.out.println("8. Strategy");
-        System.out.println("9. Template Method");
-        System.out.println("10. Visitor");
-        System.out.println("0. Volver");
-        System.out.println("─".repeat(60));
-        System.out.print("Seleccione un patrón: ");
+        String separator = "─".repeat(60);
+        logger.info("\n{}", separator);
+        logger.info("           PATRONES DE COMPORTAMIENTO");
+        logger.info(separator);
+        logger.info("1. Chain of Responsibility");
+        logger.info("2. Command");
+        logger.info("3. Iterator");
+        logger.info("4. Mediator");
+        logger.info("5. Memento");
+        logger.info("6. Observer");
+        logger.info("7. State");
+        logger.info("8. Strategy");
+        logger.info("9. Template Method");
+        logger.info("10. Visitor");
+        logger.info("0. Volver");
+        logger.info(separator);
+        logger.info("Seleccione un patrón: ");
 
         int choice = getIntInput();
         switch (choice) {
@@ -211,15 +219,15 @@ public class Main {
     }
 
     private static void showAllPatterns() {
-        System.out.println("\n\n");
-        System.out.println("╔═══════════════════════════════════════════════════════╗");
-        System.out.println("║      DEMOSTRACIÓN COMPLETA DE TODOS LOS PATRONES      ║");
-        System.out.println("╚═══════════════════════════════════════════════════════╝");
+        logger.info("\n\n");
+        logger.info("╔═══════════════════════════════════════════════════════╗");
+        logger.info("║      DEMOSTRACIÓN COMPLETA DE TODOS LOS PATRONES      ║");
+        logger.info("╚═══════════════════════════════════════════════════════╝");
 
         // Creacionales
-        System.out.println("\n\n┌─────────────────────────────────────────────────────────┐");
-        System.out.println("│               PATRONES CREACIONALES                     │");
-        System.out.println("└─────────────────────────────────────────────────────────┘");
+        logger.info("\n\n┌─────────────────────────────────────────────────────────┐");
+        logger.info("│               PATRONES CREACIONALES                     │");
+        logger.info("└─────────────────────────────────────────────────────────┘");
         demonstrateFactoryMethod();
         pause();
         demonstrateAbstractFactory();
@@ -232,9 +240,9 @@ public class Main {
         pause();
 
         // Estructurales
-        System.out.println("\n\n┌─────────────────────────────────────────────────────────┐");
-        System.out.println("│               PATRONES ESTRUCTURALES                    │");
-        System.out.println("└─────────────────────────────────────────────────────────┘");
+        logger.info("\n\n┌─────────────────────────────────────────────────────────┐");
+        logger.info("│               PATRONES ESTRUCTURALES                    │");
+        logger.info("└─────────────────────────────────────────────────────────┘");
         demonstrateAdapter();
         pause();
         demonstrateBridge();
@@ -251,9 +259,9 @@ public class Main {
         pause();
 
         // Comportamiento
-        System.out.println("\n\n┌─────────────────────────────────────────────────────────┐");
-        System.out.println("│           PATRONES DE COMPORTAMIENTO                    │");
-        System.out.println("└─────────────────────────────────────────────────────────┘");
+        logger.info("\n\n┌─────────────────────────────────────────────────────────┐");
+        logger.info("│           PATRONES DE COMPORTAMIENTO                    │");
+        logger.info("└─────────────────────────────────────────────────────────┘");
         demonstrateChainOfResponsibility();
         pause();
         demonstrateCommand();
@@ -274,18 +282,18 @@ public class Main {
         pause();
         demonstrateVisitor();
 
-        System.out.println("\n\n╔═══════════════════════════════════════════════════════╗");
-        System.out.println("║       ¡DEMOSTRACIÓN COMPLETADA EXITOSAMENTE!          ║");
-        System.out.println("║         23 Patrones de Diseño Implementados            ║");
-        System.out.println("╚═══════════════════════════════════════════════════════╝\n");
+        logger.info("\n\n╔═══════════════════════════════════════════════════════╗");
+        logger.info("║       ¡DEMOSTRACIÓN COMPLETADA EXITOSAMENTE!          ║");
+        logger.info("║         23 Patrones de Diseño Implementados            ║");
+        logger.info("╚═══════════════════════════════════════════════════════╝\n");
     }
 
     // ==================== PATRONES CREACIONALES ====================
 
     private static void demonstrateFactoryMethod() {
         printPatternHeader("FACTORY METHOD", "Creacional");
-        System.out.println("Permite crear objetos sin especificar la clase exacta.");
-        System.out.println("Contexto: Diferentes tipos de restaurantes crean diferentes platos.\n");
+        logger.info("Permite crear objetos sin especificar la clase exacta.");
+        logger.info("Contexto: Diferentes tipos de restaurantes crean diferentes platos.\n");
 
         Restaurant italian = new ItalianRestaurant();
         Restaurant pasta = new PastaRestaurant();
@@ -300,44 +308,45 @@ public class Main {
 
     private static void demonstrateAbstractFactory() {
         printPatternHeader("ABSTRACT FACTORY", "Creacional");
-        System.out.println("Crea familias de objetos relacionados sin especificar sus clases concretas.");
-        System.out.println("Contexto: Fábricas de ingredientes premium y económicos.\n");
+        logger.info("Crea familias de objetos relacionados sin especificar sus clases concretas.");
+        logger.info("Contexto: Fábricas de ingredientes premium y económicos.\n");
 
         IngredientFactory premiumFactory = new PremiumIngredientFactory();
         IngredientFactory budgetFactory = new BudgetIngredientFactory();
 
-        System.out.println("=== INGREDIENTES PREMIUM ===");
+        logger.info("=== INGREDIENTES PREMIUM ===");
         Meat premiumMeat = premiumFactory.createMeat();
         Vegetable premiumVeg = premiumFactory.createVegetable();
         Cheese premiumCheese = premiumFactory.createCheese();
         
-        System.out.println("Carne: " + premiumMeat.getName() + " ($" + premiumMeat.getCost() + ") - " + premiumMeat.getOrigin());
-        System.out.println("Vegetal: " + premiumVeg.getName() + " ($" + premiumVeg.getCost() + ") - Orgánico: " + premiumVeg.isOrganic());
-        System.out.println("Queso: " + premiumCheese.getName() + " ($" + premiumCheese.getCost() + ") - Añejado " + premiumCheese.getAgingMonths() + " meses");
+        logger.info("Carne: {} (${}) - {}", premiumMeat.getName(), premiumMeat.getCost(), premiumMeat.getOrigin());
+        logger.info("Vegetal: {} (${}) - Orgánico: {}", premiumVeg.getName(), premiumVeg.getCost(), premiumVeg.isOrganic());
+        logger.info("Queso: {} (${}) - Añejado {} meses", premiumCheese.getName(), premiumCheese.getCost(), premiumCheese.getAgingMonths());
 
-        System.out.println("\n=== INGREDIENTES ECONÓMICOS ===");
+        logger.info("\n=== INGREDIENTES ECONÓMICOS ===");
         Meat budgetMeat = budgetFactory.createMeat();
         Vegetable budgetVeg = budgetFactory.createVegetable();
         Cheese budgetCheese = budgetFactory.createCheese();
         
-        System.out.println("Carne: " + budgetMeat.getName() + " ($" + budgetMeat.getCost() + ") - " + budgetMeat.getOrigin());
-        System.out.println("Vegetal: " + budgetVeg.getName() + " ($" + budgetVeg.getCost() + ") - Orgánico: " + budgetVeg.isOrganic());
-        System.out.println("Queso: " + budgetCheese.getName() + " ($" + budgetCheese.getCost() + ") - Añejado " + budgetCheese.getAgingMonths() + " meses");
+        logger.info("Carne: {} (${}) - {}", budgetMeat.getName(), budgetMeat.getCost(), budgetMeat.getOrigin());
+        logger.info("Vegetal: {} (${}) - Orgánico: {}", budgetVeg.getName(), budgetVeg.getCost(), budgetVeg.isOrganic());
+        logger.info("Queso: {} (${}) - Añejado {} meses", budgetCheese.getName(), budgetCheese.getCost(), budgetCheese.getAgingMonths());
 
         printPatternFooter();
     }
 
     private static void demonstrateBuilder() {
         printPatternHeader("BUILDER", "Creacional");
-        System.out.println("Construye objetos complejos paso a paso.");
-        System.out.println("Contexto: Construcción de menús personalizados.\n");
+        logger.info("Construye objetos complejos paso a paso.");
+        logger.info("Contexto: Construcción de menús personalizados.\n");
 
         MenuDirector director = new MenuDirector();
 
         Menu familyMenu = director.createFamilyMenu();
-        System.out.println(familyMenu);
+        logger.info(familyMenu.toString());
 
-        System.out.println("\n" + "─".repeat(60) + "\n");
+        String separator60 = "─".repeat(60);
+        logger.info("\n{}\n", separator60);
 
         Menu customMenu = new Menu.Builder()
                 .name("Menú Personalizado del Cliente")
@@ -349,58 +358,59 @@ public class Main {
                 .glutenFree(true)
                 .build();
 
-        System.out.println(customMenu);
+        logger.info(customMenu.toString());
 
         printPatternFooter();
     }
 
     private static void demonstratePrototype() {
         printPatternHeader("PROTOTYPE", "Creacional");
-        System.out.println("Clona objetos existentes sin depender de sus clases.");
-        System.out.println("Contexto: Clonación de recetas con modificaciones.\n");
+        logger.info("Clona objetos existentes sin depender de sus clases.");
+        logger.info("Contexto: Clonación de recetas con modificaciones.\n");
 
         RecipeRegistry registry = new RecipeRegistry();
         registry.initializeDefaultRecipes();
 
-        System.out.println("=== RECETA ORIGINAL ===");
+        logger.info("=== RECETA ORIGINAL ===");
         Recipe pizzaRecipe = registry.getRecipe("pizza");
-        System.out.println(pizzaRecipe);
+        logger.info(pizzaRecipe.toString());
 
-        System.out.println("\n=== RECETA CLONADA Y MODIFICADA ===");
+        logger.info("\n=== RECETA CLONADA Y MODIFICADA ===");
         Recipe largePizza = pizzaRecipe.cloneWithModifications("Pizza Margherita Familiar", 8);
-        System.out.println(largePizza);
+        logger.info(largePizza.toString());
 
-        System.out.println("\n=== OTRA VARIANTE ===");
+        logger.info("\n=== OTRA VARIANTE ===");
         Recipe personalPizza = pizzaRecipe.cloneWithModifications("Pizza Personal", 1);
-        System.out.println(personalPizza);
+        logger.info(personalPizza.toString());
 
         printPatternFooter();
     }
 
     private static void demonstrateSingleton() {
         printPatternHeader("SINGLETON", "Creacional");
-        System.out.println("Garantiza una única instancia de una clase.");
-        System.out.println("Contexto: Configuración global del restaurante.\n");
+        logger.info("Garantiza una única instancia de una clase.");
+        logger.info("Contexto: Configuración global del restaurante.\n");
 
         RestaurantConfig config = RestaurantConfig.getInstance();
-        System.out.println(config);
+        logger.info(config.toString());
 
-        System.out.println("\n=== Generando números de orden ===");
-        System.out.println("Orden #" + config.getNextOrderNumber());
-        System.out.println("Orden #" + config.getNextOrderNumber());
-        System.out.println("Orden #" + config.getNextOrderNumber());
+        logger.info("\n=== Generando números de orden ===");
+        logger.info("Orden #{}", config.getNextOrderNumber());
+        logger.info("Orden #{}", config.getNextOrderNumber());
+        logger.info("Orden #{}", config.getNextOrderNumber());
 
-        System.out.println("\n=== Calculando impuestos ===");
+        logger.info("\n=== Calculando impuestos ===");
         double subtotal = 50.00;
         double tax = config.calculateTax(subtotal);
         double total = config.calculateTotal(subtotal);
-        System.out.println(String.format("Subtotal: $%.2f", subtotal));
-        System.out.println(String.format("Impuesto: $%.2f", tax));
-        System.out.println(String.format("Total: $%.2f", total));
+        logger.info(String.format("Subtotal: $%.2f", subtotal).toString());
+        logger.info(String.format("Impuesto: $%.2f", tax).toString());
+        logger.info(String.format("Total: $%.2f", total).toString());
 
         // Demostrar que es la misma instancia
         RestaurantConfig config2 = RestaurantConfig.getInstance();
-        System.out.println("\n¿Es la misma instancia? " + (config == config2));
+        boolean isSameInstance = (config == config2);
+        logger.info("\n¿Es la misma instancia? {}", isSameInstance);
 
         printPatternFooter();
     }
@@ -409,29 +419,29 @@ public class Main {
 
     private static void demonstrateAdapter() {
         printPatternHeader("ADAPTER", "Estructural");
-        System.out.println("Permite que interfaces incompatibles trabajen juntas.");
-        System.out.println("Contexto: Adaptar sistema legacy de pagos a interfaz moderna.\n");
+        logger.info("Permite que interfaces incompatibles trabajen juntas.");
+        logger.info("Contexto: Adaptar sistema legacy de pagos a interfaz moderna.\n");
 
         LegacyPOSSystem legacySystem = new LegacyPOSSystem();
         ModernPaymentProcessor processor = new PaymentAdapter(legacySystem);
 
         PaymentRequest request = new PaymentRequest("4532123456789012", 125.50, "Juan Pérez");
 
-        System.out.println("=== Validando método de pago ===");
+        logger.info("=== Validando método de pago ===");
         boolean isValid = processor.validatePaymentMethod(request);
-        System.out.println("Válido: " + isValid);
+        logger.info("Válido: {}", isValid);
 
-        System.out.println("\n=== Procesando pago ===");
+        logger.info("\n=== Procesando pago ===");
         PaymentResult result = processor.processPayment(request);
-        System.out.println(result);
+        logger.info(result.toString());
 
         printPatternFooter();
     }
 
     private static void demonstrateBridge() {
         printPatternHeader("BRIDGE", "Estructural");
-        System.out.println("Separa abstracción de implementación.");
-        System.out.println("Contexto: Notificaciones del restaurante con diferentes métodos de envío.\n");
+        logger.info("Separa abstracción de implementación.");
+        logger.info("Contexto: Notificaciones del restaurante con diferentes métodos de envío.\n");
 
         // Crear diferentes implementaciones
         NotificationSender email = new EmailSender();
@@ -439,19 +449,19 @@ public class Main {
         NotificationSender push = new PushNotificationSender();
 
         // Crear notificaciones con diferentes implementaciones
-        System.out.println("=== CONFIRMACIÓN DE ORDEN ===");
+        logger.info("=== CONFIRMACIÓN DE ORDEN ===");
         Notification orderConfirmation = new OrderConfirmationNotification(email, "ORD-1001", 45.99);
         orderConfirmation.notify("cliente@email.com");
 
-        System.out.println("=== RESERVACIÓN ===");
+        logger.info("=== RESERVACIÓN ===");
         Notification reservation = new ReservationNotification(sms, "2024-12-25", "19:00", 5);
         reservation.notify("+1234567890");
 
-        System.out.println("=== PROMOCIÓN ===");
+        logger.info("=== PROMOCIÓN ===");
         Notification promotion = new PromotionNotification(push, "2x1 en Pizzas", 50);
         promotion.notify("device-token-123");
 
-        System.out.println("\n=== Cambiando método de envío dinámicamente ===");
+        logger.info("\n=== Cambiando método de envío dinámicamente ===");
         orderConfirmation.changeSender(sms);
         orderConfirmation.notify("+0987654321");
 
@@ -460,8 +470,8 @@ public class Main {
 
     private static void demonstrateComposite() {
         printPatternHeader("COMPOSITE", "Estructural");
-        System.out.println("Compone objetos en estructuras de árbol.");
-        System.out.println("Contexto: Estructura jerárquica del menú del restaurante.\n");
+        logger.info("Compone objetos en estructuras de árbol.");
+        logger.info("Contexto: Estructura jerárquica del menú del restaurante.\n");
 
         // Crear menú completo
         MenuCategory mainMenu = new MenuCategory("Menú Principal", "Nuestro delicioso menú");
@@ -490,30 +500,32 @@ public class Main {
         // Mostrar menú
         mainMenu.print("");
 
-        System.out.println("\n=== Información del menú ===");
-        System.out.println("Precio total del menú completo: $" + String.format("%.2f", mainMenu.getPrice()));
+        logger.info("\n=== Información del menú ===");
+        String totalPrice = String.format("%.2f", mainMenu.getPrice());
+        logger.info("Precio total del menú completo: ${}", totalPrice);
 
         printPatternFooter();
     }
 
     private static void demonstrateDecorator() {
         printPatternHeader("DECORATOR", "Estructural");
-        System.out.println("Agrega funcionalidad a objetos dinámicamente.");
-        System.out.println("Contexto: Personalización de bebidas con extras.\n");
+        logger.info("Agrega funcionalidad a objetos dinámicamente.");
+        logger.info("Contexto: Personalización de bebidas con extras.\n");
 
         // Café básico
         Beverage beverage1 = new Coffee();
-        System.out.println(beverage1.getDescription() + " - $" + beverage1.getCost());
+        logger.info("{} - ${}", beverage1.getDescription(), beverage1.getCost());
 
         // Café con leche
         beverage1 = new MilkDecorator(beverage1);
-        System.out.println(beverage1.getDescription() + " - $" + beverage1.getCost());
+        logger.info("{} - ${}", beverage1.getDescription(), beverage1.getCost());
 
         // Café con leche y azúcar
         beverage1 = new SugarDecorator(beverage1);
-        System.out.println(beverage1.getDescription() + " - $" + beverage1.getCost());
+        logger.info("{} - ${}", beverage1.getDescription(), beverage1.getCost());
 
-        System.out.println("\n" + "─".repeat(50) + "\n");
+        String separator50 = "─".repeat(50);
+        logger.info("\n{}\n", separator50);
 
         // Bebida compleja
         Beverage beverage2 = new Coffee();
@@ -521,23 +533,24 @@ public class Main {
         beverage2 = new WhippedCreamDecorator(beverage2);
         beverage2 = new CaramelDecorator(beverage2);
         beverage2 = new SugarDecorator(beverage2);
-        System.out.println(beverage2.getDescription());
-        System.out.println("Precio final: $" + String.format("%.2f", beverage2.getCost()));
+        logger.info(beverage2.getDescription().toString());
+        double finalPrice = beverage2.getCost();
+        logger.info("Precio final: ${}", String.format("%.2f", finalPrice));
 
-        System.out.println("\n" + "─".repeat(50) + "\n");
+        logger.info("\n{}\n", separator50);
 
         // Té con miel (azúcar)
         Beverage tea = new Tea();
         tea = new SugarDecorator(tea);
-        System.out.println(tea.getDescription() + " - $" + tea.getCost());
+        logger.info("{} - ${}", tea.getDescription(), tea.getCost());
 
         printPatternFooter();
     }
 
     private static void demonstrateFacade() {
         printPatternHeader("FACADE", "Estructural");
-        System.out.println("Proporciona interfaz simplificada a un sistema complejo.");
-        System.out.println("Contexto: Sistema simplificado de procesamiento de órdenes.\n");
+        logger.info("Proporciona interfaz simplificada a un sistema complejo.");
+        logger.info("Contexto: Sistema simplificado de procesamiento de órdenes.\n");
 
         RestaurantFacade facade = new RestaurantFacade();
 
@@ -556,10 +569,10 @@ public class Main {
 
     private static void demonstrateFlyweight() {
         printPatternHeader("FLYWEIGHT", "Estructural");
-        System.out.println("Comparte objetos para soportar grandes cantidades eficientemente.");
-        System.out.println("Contexto: Optimización de memoria para tipos de mesas.\n");
+        logger.info("Comparte objetos para soportar grandes cantidades eficientemente.");
+        logger.info("Contexto: Optimización de memoria para tipos de mesas.\n");
 
-        System.out.println("Creando 20 mesas en el restaurante...\n");
+        logger.info("Creando 20 mesas en el restaurante...\n");
 
         Table[] tables = new Table[20];
 
@@ -585,7 +598,7 @@ public class Main {
         tables[15].occupy();
 
         // Mostrar información de algunas mesas
-        System.out.println("\n=== Mesas seleccionadas ===");
+        logger.info("\n=== Mesas seleccionadas ===");
         tables[0].displayInfo();
         tables[5].displayInfo();
         tables[10].displayInfo();
@@ -598,26 +611,27 @@ public class Main {
 
     private static void demonstrateProxy() {
         printPatternHeader("PROXY", "Estructural");
-        System.out.println("Proporciona sustituto o marcador de posición para otro objeto.");
-        System.out.println("Contexto: Carga lazy de imágenes del menú y control de acceso.\n");
+        logger.info("Proporciona sustituto o marcador de posición para otro objeto.");
+        logger.info("Contexto: Carga lazy de imágenes del menú y control de acceso.\n");
 
-        System.out.println("=== VIRTUAL PROXY (Lazy Loading) ===");
+        logger.info("=== VIRTUAL PROXY (Lazy Loading) ===");
         MenuImage image1 = new MenuImageProxy("menu_especial.jpg");
-        System.out.println("Proxy creado, imagen NO cargada todavía\n");
+        logger.info("Proxy creado, imagen NO cargada todavía\n");
 
-        System.out.println("Primera visualización:");
+        logger.info("Primera visualización:");
         image1.display();
 
-        System.out.println("\nSegunda visualización (imagen ya en memoria):");
+        logger.info("\nSegunda visualización (imagen ya en memoria):");
         image1.display();
 
-        System.out.println("\n" + "─".repeat(50) + "\n");
+        String separator50Proxy = "─".repeat(50);
+        logger.info("\n{}\n", separator50Proxy);
 
-        System.out.println("=== PROTECTION PROXY (Control de Acceso) ===");
+        logger.info("=== PROTECTION PROXY (Control de Acceso) ===");
         MenuImage confidentialMenu1 = new ProtectedMenuImage("menu_costos.jpg", "ADMIN");
         confidentialMenu1.display();
 
-        System.out.println();
+        logger.info("");
         MenuImage confidentialMenu2 = new ProtectedMenuImage("menu_costos.jpg", "WAITER");
         confidentialMenu2.display();
 
@@ -628,8 +642,8 @@ public class Main {
 
     private static void demonstrateChainOfResponsibility() {
         printPatternHeader("CHAIN OF RESPONSIBILITY", "Comportamiento");
-        System.out.println("Pasa solicitudes a través de una cadena de manejadores.");
-        System.out.println("Contexto: Sistema de descuentos con múltiples criterios.\n");
+        logger.info("Pasa solicitudes a través de una cadena de manejadores.");
+        logger.info("Contexto: Sistema de descuentos con múltiples criterios.\n");
 
         // Configurar cadena
         DiscountHandler vipHandler = new VIPDiscountHandler();
@@ -642,49 +656,49 @@ public class Main {
         bulkHandler.setNext(defaultHandler);
 
         // Probar diferentes solicitudes
-        System.out.println("=== Cliente VIP ===");
+        logger.info("=== Cliente VIP ===");
         DiscountRequest request1 = new DiscountRequest("VIP", 50.0, false, 5);
         double discount1 = vipHandler.handleDiscount(request1);
-        System.out.println("Descuento aplicado: " + (discount1 * 100) + "%\n");
+        logger.info("Descuento aplicado: {}%\n", discount1 * 100);
 
-        System.out.println("=== Cliente leal (10+ visitas) ===");
+        logger.info("=== Cliente leal (10+ visitas) ===");
         DiscountRequest request2 = new DiscountRequest("REGULAR", 50.0, true, 15);
         double discount2 = vipHandler.handleDiscount(request2);
-        System.out.println("Descuento aplicado: " + (discount2 * 100) + "%\n");
+        logger.info("Descuento aplicado: {}%\n", discount2 * 100);
 
-        System.out.println("=== Orden grande (+$100) ===");
+        logger.info("=== Orden grande (+$100) ===");
         DiscountRequest request3 = new DiscountRequest("REGULAR", 150.0, false, 3);
         double discount3 = vipHandler.handleDiscount(request3);
-        System.out.println("Descuento aplicado: " + (discount3 * 100) + "%\n");
+        logger.info("Descuento aplicado: {}%\n", discount3 * 100);
 
-        System.out.println("=== Cliente regular ===");
+        logger.info("=== Cliente regular ===");
         DiscountRequest request4 = new DiscountRequest("REGULAR", 50.0, false, 2);
         double discount4 = vipHandler.handleDiscount(request4);
-        System.out.println("Descuento aplicado: " + (discount4 * 100) + "%\n");
+        logger.info("Descuento aplicado: {}%\n", discount4 * 100);
 
         printPatternFooter();
     }
 
     private static void demonstrateCommand() {
         printPatternHeader("COMMAND", "Comportamiento");
-        System.out.println("Encapsula solicitudes como objetos.");
-        System.out.println("Contexto: Sistema de órdenes con soporte de undo.\n");
+        logger.info("Encapsula solicitudes como objetos.");
+        logger.info("Contexto: Sistema de órdenes con soporte de undo.\n");
 
         KitchenOrder order = new KitchenOrder();
         Waiter waiter = new Waiter();
 
-        System.out.println("=== Tomando orden ===");
+        logger.info("=== Tomando orden ===");
         waiter.takeOrder(new AddItemCommand(order, "Pizza Margherita"));
         waiter.takeOrder(new AddItemCommand(order, "Ensalada César"));
         waiter.takeOrder(new AddItemCommand(order, "Refresco"));
 
-        System.out.println("\n=== Cliente cambia de opinión ===");
+        logger.info("\n=== Cliente cambia de opinión ===");
         waiter.undoLastOrder();
 
-        System.out.println("\n=== Agregar otro item ===");
+        logger.info("\n=== Agregar otro item ===");
         waiter.takeOrder(new AddItemCommand(order, "Jugo natural"));
 
-        System.out.println();
+        logger.info("");
         waiter.takeOrder(new PrepareOrderCommand(order));
 
         waiter.showHistory();
@@ -694,8 +708,8 @@ public class Main {
 
     private static void demonstrateIterator() {
         printPatternHeader("ITERATOR", "Comportamiento");
-        System.out.println("Accede secuencialmente a elementos de una colección.");
-        System.out.println("Contexto: Iteración sobre platos especiales del día.\n");
+        logger.info("Accede secuencialmente a elementos de una colección.");
+        logger.info("Contexto: Iteración sobre platos especiales del día.\n");
 
         DailyMenuCollection menu = new DailyMenuCollection();
         menu.addSpecial(new DailySpecial("Tacos al Pastor", "Mexicana", 12.99, "Martes"));
@@ -704,16 +718,16 @@ public class Main {
         menu.addSpecial(new DailySpecial("Pizza Napolitana", "Italiana", 14.99, "Viernes"));
         menu.addSpecial(new DailySpecial("Pad Thai", "Tailandesa", 13.99, "Sábado"));
 
-        System.out.println("=== TODOS LOS ESPECIALES ===");
+        logger.info("=== TODOS LOS ESPECIALES ===");
         MenuIterator iterator = menu.createIterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            logger.info(iterator.next().toString());
         }
 
-        System.out.println("\n=== SOLO COMIDA ITALIANA ===");
+        logger.info("\n=== SOLO COMIDA ITALIANA ===");
         MenuIterator italianIterator = menu.createFilteredIterator("Italiana");
         while (italianIterator.hasNext()) {
-            System.out.println(italianIterator.next());
+            logger.info(italianIterator.next().toString());
         }
 
         printPatternFooter();
@@ -721,8 +735,8 @@ public class Main {
 
     private static void demonstrateMediator() {
         printPatternHeader("MEDIATOR", "Comportamiento");
-        System.out.println("Reduce dependencias entre objetos mediante un mediador.");
-        System.out.println("Contexto: Coordinación entre departamentos del restaurante.\n");
+        logger.info("Reduce dependencias entre objetos mediante un mediador.");
+        logger.info("Contexto: Coordinación entre departamentos del restaurante.\n");
 
         RestaurantCoordinator mediator = new RestaurantCoordinator();
 
@@ -734,7 +748,7 @@ public class Main {
         mediator.registerComponent(kitchen);
         mediator.registerComponent(delivery);
 
-        System.out.println("\n=== Flujo de una orden ===");
+        logger.info("\n=== Flujo de una orden ===");
         frontDesk.receiveOrder("Pizza + Bebida para mesa 5");
         
         try {
@@ -758,44 +772,44 @@ public class Main {
 
     private static void demonstrateMemento() {
         printPatternHeader("MEMENTO", "Comportamiento");
-        System.out.println("Captura y restaura el estado interno de un objeto.");
-        System.out.println("Contexto: Historial de cambios en una orden.\n");
+        logger.info("Captura y restaura el estado interno de un objeto.");
+        logger.info("Contexto: Historial de cambios en una orden.\n");
 
         com.example.patterns.behavioral.memento.Order order = 
             new com.example.patterns.behavioral.memento.Order("ORD-4001");
         OrderHistory history = new OrderHistory();
 
-        System.out.println("=== Estado inicial ===");
-        System.out.println(order);
+        logger.info("=== Estado inicial ===");
+        logger.info(order.toString());
         history.save(order);
 
-        System.out.println("\n=== Agregando items ===");
+        logger.info("\n=== Agregando items ===");
         order.addItem("Pizza", 15.99);
-        System.out.println(order);
+        logger.info(order.toString());
         history.save(order);
 
         order.addItem("Refresco", 2.99);
-        System.out.println(order);
+        logger.info(order.toString());
         history.save(order);
 
         order.setStatus("CONFIRMADA");
-        System.out.println(order);
+        logger.info(order.toString());
         history.save(order);
 
-        System.out.println("\n=== Cliente quiere deshacer cambios ===");
+        logger.info("\n=== Cliente quiere deshacer cambios ===");
         history.undo(order);
-        System.out.println(order);
+        logger.info(order.toString());
 
         history.undo(order);
-        System.out.println(order);
+        logger.info(order.toString());
 
         printPatternFooter();
     }
 
     private static void demonstrateObserver() {
         printPatternHeader("OBSERVER", "Comportamiento");
-        System.out.println("Notifica cambios a múltiples observadores.");
-        System.out.println("Contexto: Tracking de órdenes con múltiples suscriptores.\n");
+        logger.info("Notifica cambios a múltiples observadores.");
+        logger.info("Contexto: Tracking de órdenes con múltiples suscriptores.\n");
 
         OrderTracker tracker = new OrderTracker("ORD-5001");
 
@@ -828,28 +842,28 @@ public class Main {
 
     private static void demonstrateState() {
         printPatternHeader("STATE", "Comportamiento");
-        System.out.println("Cambia comportamiento según el estado interno.");
-        System.out.println("Contexto: Estados de una mesa del restaurante.\n");
+        logger.info("Cambia comportamiento según el estado interno.");
+        logger.info("Contexto: Estados de una mesa del restaurante.\n");
 
         TableContext table = new TableContext(10);
 
-        System.out.println("\n=== Flujo normal de una mesa ===");
+        logger.info("\n=== Flujo normal de una mesa ===");
         table.reserve();
-        System.out.println("Estado actual: " + table.getCurrentState());
+        logger.info("Estado actual: {}", table.getCurrentState());
 
-        System.out.println();
+        logger.info("");
         table.occupy();
-        System.out.println("Estado actual: " + table.getCurrentState());
+        logger.info("Estado actual: {}", table.getCurrentState());
 
-        System.out.println();
+        logger.info("");
         table.free();
-        System.out.println("Estado actual: " + table.getCurrentState());
+        logger.info("Estado actual: {}", table.getCurrentState());
 
-        System.out.println();
+        logger.info("");
         table.clean();
-        System.out.println("Estado actual: " + table.getCurrentState());
+        logger.info("Estado actual: {}", table.getCurrentState());
 
-        System.out.println("\n=== Intentando acciones inválidas ===");
+        logger.info("\n=== Intentando acciones inválidas ===");
         table.clean(); // Ya está limpia
         table.occupy(); // Ocupar directamente
         table.reserve(); // No se puede reservar ocupada
@@ -859,45 +873,45 @@ public class Main {
 
     private static void demonstrateStrategy() {
         printPatternHeader("STRATEGY", "Comportamiento");
-        System.out.println("Define familia de algoritmos intercambiables.");
-        System.out.println("Contexto: Diferentes estrategias de precios.\n");
+        logger.info("Define familia de algoritmos intercambiables.");
+        logger.info("Contexto: Diferentes estrategias de precios.\n");
 
         com.example.patterns.behavioral.strategy.MenuItem item = 
             new com.example.patterns.behavioral.strategy.MenuItem("Hamburguesa Deluxe", 15.00);
 
-        System.out.println("=== Precio Regular ===");
+        logger.info("=== Precio Regular ===");
         item.setPricingStrategy(new RegularPricing());
-        System.out.println(item.getPriceInfo());
+        logger.info(item.getPriceInfo().toString());
 
-        System.out.println("\n=== Happy Hour ===");
+        logger.info("\n=== Happy Hour ===");
         item.setPricingStrategy(new HappyHourPricing());
-        System.out.println(item.getPriceInfo());
+        logger.info(item.getPriceInfo().toString());
 
-        System.out.println("\n=== Fin de Semana ===");
+        logger.info("\n=== Fin de Semana ===");
         item.setPricingStrategy(new WeekendPricing());
-        System.out.println(item.getPriceInfo());
+        logger.info(item.getPriceInfo().toString());
 
-        System.out.println("\n=== Precio de Miembro ===");
+        logger.info("\n=== Precio de Miembro ===");
         item.setPricingStrategy(new MemberPricing());
-        System.out.println(item.getPriceInfo());
+        logger.info(item.getPriceInfo().toString());
 
         printPatternFooter();
     }
 
     private static void demonstrateTemplateMethod() {
         printPatternHeader("TEMPLATE METHOD", "Comportamiento");
-        System.out.println("Define esqueleto de algoritmo, delegando pasos a subclases.");
-        System.out.println("Contexto: Proceso de preparación de diferentes comidas.\n");
+        logger.info("Define esqueleto de algoritmo, delegando pasos a subclases.");
+        logger.info("Contexto: Proceso de preparación de diferentes comidas.\n");
 
-        System.out.println("=== Preparando Hamburguesa ===");
+        logger.info("=== Preparando Hamburguesa ===");
         MealPreparation burger = new BurgerPreparation();
         burger.prepareMeal();
 
-        System.out.println("\n=== Preparando Ensalada ===");
+        logger.info("\n=== Preparando Ensalada ===");
         MealPreparation salad = new SaladPreparation();
         salad.prepareMeal();
 
-        System.out.println("\n=== Preparando Pasta (con salsa) ===");
+        logger.info("\n=== Preparando Pasta (con salsa) ===");
         MealPreparation pastaWithSauce = new PastaPreparation(true);
         pastaWithSauce.prepareMeal();
 
@@ -906,8 +920,8 @@ public class Main {
 
     private static void demonstrateVisitor() {
         printPatternHeader("VISITOR", "Comportamiento");
-        System.out.println("Separa algoritmos de objetos sobre los que operan.");
-        System.out.println("Contexto: Operaciones sobre items del menú.\n");
+        logger.info("Separa algoritmos de objetos sobre los que operan.");
+        logger.info("Contexto: Operaciones sobre items del menú.\n");
 
         // Crear items del menú
         VisitableMenuItem[] order = {
@@ -918,23 +932,25 @@ public class Main {
         };
 
         // Visitor para calcular precio
-        System.out.println("=== CÁLCULO DE PRECIO ===");
+        logger.info("=== CÁLCULO DE PRECIO ===");
         PriceCalculatorVisitor priceCalculator = new PriceCalculatorVisitor();
         for (VisitableMenuItem item : order) {
             item.accept(priceCalculator);
         }
-        System.out.println("\nPrecio total: $" + String.format("%.2f", priceCalculator.getTotalPrice()));
+        String totalPriceFormatted = String.format("%.2f", priceCalculator.getTotalPrice());
+        logger.info("\nPrecio total: ${}", totalPriceFormatted);
 
-        System.out.println("\n" + "─".repeat(50) + "\n");
+        String separatorVisitor = "─".repeat(50);
+        logger.info("\n{}\n", separatorVisitor);
 
         // Visitor para análisis nutricional
-        System.out.println("=== ANÁLISIS NUTRICIONAL ===");
+        logger.info("=== ANÁLISIS NUTRICIONAL ===");
         NutritionalAnalysisVisitor nutritionAnalysis = new NutritionalAnalysisVisitor();
         for (VisitableMenuItem item : order) {
             item.accept(nutritionAnalysis);
         }
-        System.out.println("\nTotal calorías: " + nutritionAnalysis.getTotalCalories() + " kcal");
-        System.out.println("Total azúcar: " + nutritionAnalysis.getTotalSugar() + "g");
+        logger.info("\nTotal calorías: {} kcal", nutritionAnalysis.getTotalCalories());
+        logger.info("Total azúcar: {}g", nutritionAnalysis.getTotalSugar());
 
         printPatternFooter();
     }
@@ -942,19 +958,22 @@ public class Main {
     // ==================== UTILIDADES ====================
 
     private static void printPatternHeader(String patternName, String category) {
-        System.out.println("\n\n" + "╔" + "═".repeat(58) + "╗");
-        System.out.println("║  " + String.format("%-54s", patternName + " (" + category + ")") + "  ║");
-        System.out.println("╚" + "═".repeat(58) + "╝");
+        String doubleEquals = "═".repeat(58);
+        String headerText = String.format("%-54s", patternName + " (" + category + ")");
+        logger.info("\n\n╔{}╗", doubleEquals);
+        logger.info("║  {}  ║", headerText);
+        logger.info("╚{}╝", doubleEquals);
     }
 
     private static void printPatternFooter() {
-        System.out.println("\n" + "─".repeat(60));
-        System.out.print("Presione ENTER para continuar...");
+        String separator = "─".repeat(60);
+        logger.info("\n{}", separator);
+        logger.info("Presione ENTER para continuar...");
         scanner.nextLine();
     }
 
     private static void pause() {
-        System.out.print("\nPresione ENTER para continuar con el siguiente patrón...");
+        logger.info("\nPresione ENTER para continuar con el siguiente patrón...");
         scanner.nextLine();
     }
 
@@ -967,3 +986,7 @@ public class Main {
         }
     }
 }
+
+
+
+
