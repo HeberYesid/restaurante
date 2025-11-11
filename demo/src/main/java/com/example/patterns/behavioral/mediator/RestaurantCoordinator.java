@@ -1,5 +1,8 @@
 package com.example.patterns.behavioral.mediator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,17 +10,18 @@ import java.util.List;
  * Mediador concreto
  */
 public class RestaurantCoordinator implements RestaurantMediator {
+    private static final Logger logger = LoggerFactory.getLogger(RestaurantCoordinator.class);
     private List<Component> components = new ArrayList<>();
 
     @Override
     public void registerComponent(Component component) {
         components.add(component);
-        System.out.println("Componente registrado: " + component.getName());
+        logger.info("Componente registrado: {}", component.getName());
     }
 
     @Override
     public void notify(Component sender, String event) {
-        System.out.println("\n[MEDIATOR] Evento de " + sender.getName() + ": " + event);
+        logger.info("\n[MEDIATOR] Evento de {}: {}", sender.getName(), event);
         
         if (event.startsWith("ORDER_RECEIVED:")) {
             // Notificar a cocina
@@ -36,6 +40,6 @@ public class RestaurantCoordinator implements RestaurantMediator {
                     .forEach(c -> c.receive("Confirmación: " + event));
         }
         
-        System.out.println();
+        logger.info("");
     }
 }

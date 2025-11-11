@@ -1,35 +1,39 @@
 package com.example.patterns.behavioral.command;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Stack;
 
 /**
  * Invoker - Ejecutor de comandos con soporte de undo
  */
 public class Waiter {
+    private static final Logger logger = LoggerFactory.getLogger(Waiter.class);
     private Stack<Command> commandHistory = new Stack<>();
 
     public void takeOrder(Command command) {
         command.execute();
         commandHistory.push(command);
-        System.out.println("Comando ejecutado: " + command.getDescription());
+        logger.info("Comando ejecutado: {}", command.getDescription());
     }
 
     public void undoLastOrder() {
         if (!commandHistory.isEmpty()) {
             Command command = commandHistory.pop();
             command.undo();
-            System.out.println("Comando deshecho: " + command.getDescription());
+            logger.info("Comando deshecho: {}", command.getDescription());
         } else {
-            System.out.println("No hay comandos para deshacer");
+            logger.info("No hay comandos para deshacer");
         }
     }
 
     public void showHistory() {
-        System.out.println("\n=== Historial de comandos ===");
+        logger.info("\n=== Historial de comandos ===");
         if (commandHistory.isEmpty()) {
-            System.out.println("No hay comandos en el historial");
+            logger.info("No hay comandos en el historial");
         } else {
-            commandHistory.forEach(cmd -> System.out.println("  - " + cmd.getDescription()));
+            commandHistory.forEach(cmd -> logger.info("  - {}", cmd.getDescription()));
         }
     }
 }

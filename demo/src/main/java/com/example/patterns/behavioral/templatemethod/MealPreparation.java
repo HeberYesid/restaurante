@@ -1,14 +1,18 @@
 package com.example.patterns.behavioral.templatemethod;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Patrón Template Method
  * Define el esqueleto de preparación de una comida
  */
 public abstract class MealPreparation {
+    private static final Logger logger = LoggerFactory.getLogger(MealPreparation.class);
     
     // Template Method
     public final void prepareMeal() {
-        System.out.println("\n=== Iniciando preparación de comida ===");
+        logger.info("\n=== Iniciando preparación de comida ===");
         gatherIngredients();
         prepareIngredients();
         cook();
@@ -18,7 +22,7 @@ public abstract class MealPreparation {
         }
         
         serve();
-        System.out.println("=== Comida lista ===\n");
+        logger.info("=== Comida lista ===\n");
     }
 
     // Pasos abstractos que deben implementar las subclases
@@ -29,7 +33,7 @@ public abstract class MealPreparation {
 
     // Hook method con implementación por defecto
     protected void addCondiments() {
-        System.out.println("Agregando condimentos estándar");
+        logger.info("Agregando condimentos estándar");
     }
 
     // Hook method que las subclases pueden sobrescribir

@@ -1,9 +1,13 @@
 package com.example.patterns.structural.proxy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Proxy de protección - Control de acceso
  */
 public class ProtectedMenuImage implements MenuImage {
+    private static final Logger logger = LoggerFactory.getLogger(ProtectedMenuImage.class);
     private RealMenuImage realImage;
     private String filename;
     private String userRole;
@@ -21,7 +25,7 @@ public class ProtectedMenuImage implements MenuImage {
             }
             realImage.display();
         } else {
-            System.out.println("ACCESO DENEGADO: No tienes permisos para ver " + filename);
+            logger.error("ACCESO DENEGADO: No tienes permisos para ver {}", filename);
         }
     }
 

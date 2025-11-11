@@ -1,35 +1,39 @@
 package com.example.patterns.behavioral.visitor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Visitor concreto para análisis nutricional
  */
 public class NutritionalAnalysisVisitor implements MenuItemVisitor {
+    private static final Logger logger = LoggerFactory.getLogger(NutritionalAnalysisVisitor.class);
     private int totalCalories = 0;
     private int totalSugar = 0;
 
     @Override
     public void visit(Appetizer appetizer) {
-        System.out.println("  Analizando entrada: " + appetizer.getName());
+        logger.info("  Analizando entrada: {}", appetizer.getName());
     }
 
     @Override
     public void visit(MainCourse mainCourse) {
         totalCalories += mainCourse.getCalories();
-        System.out.println("  Plato principal: " + mainCourse.getName() + 
-                         " - " + mainCourse.getCalories() + " calorías");
+        logger.info("  Plato principal: {} - {} calorías", 
+                         mainCourse.getName(), mainCourse.getCalories());
     }
 
     @Override
     public void visit(Dessert dessert) {
         totalSugar += dessert.getSugarGrams();
-        System.out.println("  Postre: " + dessert.getName() + 
-                         " - " + dessert.getSugarGrams() + "g azúcar");
+        logger.info("  Postre: {} - {}g azúcar", 
+                         dessert.getName(), dessert.getSugarGrams());
     }
 
     @Override
     public void visit(Drink drink) {
-        System.out.println("  Bebida: " + drink.getName() + 
-                         " - " + drink.getVolumeMl() + "ml");
+        logger.info("  Bebida: {} - {}ml", 
+                         drink.getName(), drink.getVolumeMl());
     }
 
     public int getTotalCalories() {

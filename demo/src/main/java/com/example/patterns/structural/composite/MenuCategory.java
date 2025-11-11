@@ -1,5 +1,8 @@
 package com.example.patterns.structural.composite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +10,7 @@ import java.util.List;
  * Compuesto - Categoría o sección del menú que contiene otros componentes
  */
 public class MenuCategory extends MenuComponent {
+    private static final Logger logger = LoggerFactory.getLogger(MenuCategory.class);
     private List<MenuComponent> children = new ArrayList<>();
 
     public MenuCategory(String name, String description) {
@@ -38,9 +42,9 @@ public class MenuCategory extends MenuComponent {
 
     @Override
     public void print(String indent) {
-        System.out.println(indent + "=== " + name + " ===");
-        System.out.println(indent + description);
-        System.out.println();
+        logger.info("{}{} {}", indent, "===", name + " ===");
+        logger.info("{}{}", indent, description);
+        logger.info("");
         
         for (MenuComponent component : children) {
             component.print(indent + "  ");

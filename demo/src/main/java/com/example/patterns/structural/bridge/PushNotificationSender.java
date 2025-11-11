@@ -1,11 +1,16 @@
 package com.example.patterns.structural.bridge;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PushNotificationSender implements NotificationSender {
+    private static final Logger logger = LoggerFactory.getLogger(PushNotificationSender.class);
+    
     @Override
     public void send(String recipient, String message) {
-        System.out.println("Enviando NOTIFICACIÓN PUSH al dispositivo: " + recipient);
-        System.out.println("Contenido: " + message);
-        System.out.println("---");
+        logger.info("Enviando NOTIFICACIÓN PUSH al dispositivo: {}", recipient);
+        logger.info("Contenido: {}", message);
+        logger.info("---");
     }
 
     @Override

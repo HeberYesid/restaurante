@@ -1,10 +1,14 @@
 package com.example.patterns.structural.facade;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Patrón Facade
  * Proporciona una interfaz simplificada para el sistema complejo de restaurante
  */
 public class RestaurantFacade {
+    private static final Logger logger = LoggerFactory.getLogger(RestaurantFacade.class);
     private InventorySystem inventory;
     private PaymentSystem payment;
     private KitchenSystem kitchen;
@@ -18,17 +22,17 @@ public class RestaurantFacade {
     }
 
     public boolean placeOrder(String orderId, String items, double total, String paymentMethod) {
-        System.out.println("\n=== Procesando orden " + orderId + " ===");
+        logger.info("\n=== Procesando orden {} ===", orderId);
         
         // Verificar inventario
         if (!inventory.checkAvailability(items)) {
-            System.out.println("ERROR: Artículos no disponibles");
+            logger.error("ERROR: Artículos no disponibles");
             return false;
         }
 
         // Procesar pago
         if (!payment.processPayment(total, paymentMethod)) {
-            System.out.println("ERROR: Pago rechazado");
+            logger.error("ERROR: Pago rechazado");
             return false;
         }
 
@@ -41,18 +45,18 @@ public class RestaurantFacade {
         // Generar recibo
         payment.generateReceipt(orderId, total);
 
-        System.out.println("Orden procesada exitosamente\n");
+        logger.info("Orden procesada exitosamente\n");
         return true;
     }
 
     public void placeDeliveryOrder(String orderId, String items, double total, 
                                    String paymentMethod, String address) {
-        System.out.println("\n=== Procesando orden de entrega " + orderId + " ===");
+        logger.info("\n=== Procesando orden de entrega {} ===", orderId);
         
         if (placeOrder(orderId, items, total, paymentMethod)) {
             delivery.scheduleDelivery(orderId, address);
             delivery.assignDriver(orderId);
-            System.out.println("Orden de entrega procesada exitosamente\n");
+            logger.info("Orden de entrega procesada exitosamente\n");
         }
     }
 

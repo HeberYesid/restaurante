@@ -1,24 +1,28 @@
 package com.example.patterns.structural.proxy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Proxy - Carga lazy de imágenes
  */
 public class MenuImageProxy implements MenuImage {
+    private static final Logger logger = LoggerFactory.getLogger(MenuImageProxy.class);
     private String filename;
     private RealMenuImage realImage;
 
     public MenuImageProxy(String filename) {
         this.filename = filename;
-        System.out.println("Proxy creado para: " + filename + " (imagen no cargada aún)");
+        logger.info("Proxy creado para: {} (imagen no cargada aún)", filename);
     }
 
     @Override
     public void display() {
         if (realImage == null) {
-            System.out.println("Primera visualización - cargando imagen...");
+            logger.info("Primera visualización - cargando imagen...");
             realImage = new RealMenuImage(filename);
         } else {
-            System.out.println("Usando imagen previamente cargada...");
+            logger.info("Usando imagen previamente cargada...");
         }
         realImage.display();
     }

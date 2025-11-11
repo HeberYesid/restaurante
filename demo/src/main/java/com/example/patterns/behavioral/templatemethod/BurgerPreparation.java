@@ -1,28 +1,33 @@
 package com.example.patterns.behavioral.templatemethod;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class BurgerPreparation extends MealPreparation {
+    private static final Logger logger = LoggerFactory.getLogger(BurgerPreparation.class);
+    
     @Override
     protected void gatherIngredients() {
-        System.out.println("Reuniendo: pan, carne, lechuga, tomate, queso");
+        logger.info("Reuniendo: pan, carne, lechuga, tomate, queso");
     }
 
     @Override
     protected void prepareIngredients() {
-        System.out.println("Cortando vegetales, formando hamburguesa");
+        logger.info("Cortando vegetales, formando hamburguesa");
     }
 
     @Override
     protected void cook() {
-        System.out.println("Asando hamburguesa a la parrilla por 5 minutos cada lado");
+        logger.info("Asando hamburguesa a la parrilla por 5 minutos cada lado");
     }
 
     @Override
     protected void addCondiments() {
-        System.out.println("Agregando ketchup, mostaza y mayonesa");
+        logger.info("Agregando ketchup, mostaza y mayonesa");
     }
 
     @Override
     protected void serve() {
-        System.out.println("Sirviendo hamburguesa con papas fritas");
+        logger.info("Sirviendo hamburguesa con papas fritas");
     }
 }

@@ -1,21 +1,25 @@
 package com.example.patterns.behavioral.state;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Context
  */
 public class TableContext {
+    private static final Logger logger = LoggerFactory.getLogger(TableContext.class);
     private TableState state;
     private int tableNumber;
 
     public TableContext(int tableNumber) {
         this.tableNumber = tableNumber;
         this.state = new AvailableState();
-        System.out.println("Mesa " + tableNumber + " creada en estado: " + state.getStateName());
+        logger.info("Mesa {} creada en estado: {}", tableNumber, state.getStateName());
     }
 
     public void setState(TableState state) {
-        System.out.println("Mesa " + tableNumber + " cambia de " + 
-                         this.state.getStateName() + " a " + state.getStateName());
+        logger.info("Mesa {} cambia de {} a {}", tableNumber, 
+                         this.state.getStateName(), state.getStateName());
         this.state = state;
     }
 

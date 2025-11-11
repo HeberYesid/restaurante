@@ -1,12 +1,17 @@
 package com.example.patterns.structural.bridge;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EmailSender implements NotificationSender {
+    private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
+    
     @Override
     public void send(String recipient, String message) {
-        System.out.println("Enviando EMAIL a: " + recipient);
-        System.out.println("Asunto: Notificación del Restaurante");
-        System.out.println("Mensaje: " + message);
-        System.out.println("---");
+        logger.info("Enviando EMAIL a: {}", recipient);
+        logger.info("Asunto: Notificación del Restaurante");
+        logger.info("Mensaje: {}", message);
+        logger.info("---");
     }
 
     @Override

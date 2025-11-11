@@ -1,5 +1,8 @@
 package com.example.patterns.structural.flyweight;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +10,7 @@ import java.util.Map;
  * Fábrica de Flyweight
  */
 public class TableTypeFactory {
+    private static final Logger logger = LoggerFactory.getLogger(TableTypeFactory.class);
     private static final Map<String, TableType> tableTypes = new HashMap<>();
 
     public static TableType getTableType(String type, int capacity, String location, boolean hasWindowView) {
@@ -27,8 +31,8 @@ public class TableTypeFactory {
     }
 
     public static void printStatistics() {
-        System.out.println("\n=== Estadísticas de Flyweight ===");
-        System.out.println("Tipos de mesa únicos creados: " + tableTypes.size());
-        System.out.println("Memoria optimizada mediante compartición de objetos");
+        logger.info("\n=== Estadísticas de Flyweight ===");
+        logger.info("Tipos de mesa únicos creados: {}", tableTypes.size());
+        logger.info("Memoria optimizada mediante compartición de objetos");
     }
 }

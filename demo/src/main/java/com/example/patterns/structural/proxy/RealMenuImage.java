@@ -1,9 +1,13 @@
 package com.example.patterns.structural.proxy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Sujeto real - Imagen pesada que tarda en cargar
  */
 public class RealMenuImage implements MenuImage {
+    private static final Logger logger = LoggerFactory.getLogger(RealMenuImage.class);
     private String filename;
     private long size;
 
@@ -13,7 +17,7 @@ public class RealMenuImage implements MenuImage {
     }
 
     private void loadImageFromDisk() {
-        System.out.println("Cargando imagen pesada desde disco: " + filename);
+        logger.info("Cargando imagen pesada desde disco: {}", filename);
         // Simular carga pesada
         try {
             Thread.sleep(1000);
@@ -21,12 +25,12 @@ public class RealMenuImage implements MenuImage {
             Thread.currentThread().interrupt();
         }
         this.size = 2048000; // 2MB simulado
-        System.out.println("Imagen cargada: " + filename + " (" + size + " bytes)");
+        logger.info("Imagen cargada: {} ({} bytes)", filename, size);
     }
 
     @Override
     public void display() {
-        System.out.println("Mostrando imagen: " + filename);
+        logger.info("Mostrando imagen: {}", filename);
     }
 
     @Override

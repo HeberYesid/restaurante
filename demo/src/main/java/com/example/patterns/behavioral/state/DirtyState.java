@@ -1,24 +1,29 @@
 package com.example.patterns.behavioral.state;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DirtyState implements TableState {
+    private static final Logger logger = LoggerFactory.getLogger(DirtyState.class);
+    
     @Override
     public void reserve(TableContext table) {
-        System.out.println("No se puede reservar una mesa sucia");
+        logger.info("No se puede reservar una mesa sucia");
     }
 
     @Override
     public void occupy(TableContext table) {
-        System.out.println("No se puede ocupar una mesa sucia");
+        logger.info("No se puede ocupar una mesa sucia");
     }
 
     @Override
     public void free(TableContext table) {
-        System.out.println("La mesa ya está libre pero necesita limpieza");
+        logger.info("La mesa ya está libre pero necesita limpieza");
     }
 
     @Override
     public void clean(TableContext table) {
-        System.out.println("Limpiando mesa " + table.getTableNumber() + "...");
+        logger.info("Limpiando mesa {}...", table.getTableNumber());
         table.setState(new AvailableState());
     }
 

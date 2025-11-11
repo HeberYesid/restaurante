@@ -1,12 +1,17 @@
 package com.example.patterns.behavioral.mediator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Kitchen extends Component {
+    private static final Logger logger = LoggerFactory.getLogger(Kitchen.class);
+    
     public Kitchen(RestaurantMediator mediator) {
         super(mediator, "Cocina");
     }
 
     public void completeOrder(String orderId) {
-        System.out.println(name + ": Orden completada - " + orderId);
+        logger.info("{}: Orden completada - {}", name, orderId);
         mediator.notify(this, "ORDER_READY:" + orderId);
     }
 
@@ -14,9 +19,9 @@ public class Kitchen extends Component {
     public void receive(String message) {
         if (message.startsWith("ORDER_RECEIVED:")) {
             String orderDetails = message.substring(15);
-            System.out.println(name + " comienza a preparar: " + orderDetails);
+            logger.info("{} comienza a preparar: {}", name, orderDetails);
         } else {
-            System.out.println(name + " recibe: " + message);
+            logger.info("{} recibe: {}", name, message);
         }
     }
 }

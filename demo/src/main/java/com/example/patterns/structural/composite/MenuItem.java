@@ -1,9 +1,13 @@
 package com.example.patterns.structural.composite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Hoja - Elemento individual del menú
  */
 public class MenuItem extends MenuComponent {
+    private static final Logger logger = LoggerFactory.getLogger(MenuItem.class);
     private double price;
     private boolean vegetarian;
 
@@ -24,9 +28,9 @@ public class MenuItem extends MenuComponent {
 
     @Override
     public void print(String indent) {
-        System.out.printf("%s%s - $%.2f%s\n", 
-                         indent, name, price, 
+        logger.info("{}{} - ${}{}", 
+                         indent, name, String.format("%.2f", price), 
                          vegetarian ? " (V)" : "");
-        System.out.printf("%s  %s\n", indent, description);
+        logger.info("{}  {}", indent, description);
     }
 }

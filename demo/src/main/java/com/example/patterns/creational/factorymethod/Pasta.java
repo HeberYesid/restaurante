@@ -1,6 +1,11 @@
 package com.example.patterns.creational.factorymethod;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Pasta extends Dish {
+    private static final Logger logger = LoggerFactory.getLogger(Pasta.class);
+    
     public Pasta() {
         this.name = "Pasta Carbonara";
         this.price = 12.99;
@@ -9,16 +14,16 @@ public class Pasta extends Dish {
 
     @Override
     public void prepare() {
-        System.out.println("Preparando ingredientes para la pasta...");
+        logger.info("Preparando ingredientes para la pasta...");
     }
 
     @Override
     public void cook() {
-        System.out.println("Hirviendo pasta al dente...");
+        logger.info("Hirviendo pasta al dente...");
     }
 
     @Override
     public void serve() {
-        System.out.println("Sirviendo pasta con queso parmesano rallado.");
+        logger.info("Sirviendo pasta con queso parmesano rallado.");
     }
 }

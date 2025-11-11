@@ -1,10 +1,14 @@
 package com.example.patterns.structural.flyweight;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Patrón Flyweight
  * Estado intrínseco compartido (inmutable)
  */
 public class TableType {
+    private static final Logger logger = LoggerFactory.getLogger(TableType.class);
     private final String type;
     private final int capacity;
     private final String location;
@@ -17,11 +21,11 @@ public class TableType {
         this.hasWindowView = hasWindowView;
         
         // Simular carga pesada de recursos
-        System.out.println("Creando nuevo tipo de mesa (recurso pesado): " + type);
+        logger.info("Creando nuevo tipo de mesa (recurso pesado): {}", type);
     }
 
     public void displayInfo(int tableNumber, boolean isOccupied) {
-        System.out.printf("Mesa #%d - Tipo: %s, Capacidad: %d, Ubicación: %s, Vista: %s, Estado: %s\n",
+        logger.info("Mesa #{} - Tipo: {}, Capacidad: {}, Ubicación: {}, Vista: {}, Estado: {}",
                          tableNumber, type, capacity, location,
                          hasWindowView ? "Sí" : "No",
                          isOccupied ? "Ocupada" : "Libre");

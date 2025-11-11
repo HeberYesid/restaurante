@@ -1,6 +1,10 @@
 package com.example.patterns.behavioral.templatemethod;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PastaPreparation extends MealPreparation {
+    private static final Logger logger = LoggerFactory.getLogger(PastaPreparation.class);
     private boolean withSauce;
 
     public PastaPreparation(boolean withSauce) {
@@ -9,22 +13,22 @@ public class PastaPreparation extends MealPreparation {
 
     @Override
     protected void gatherIngredients() {
-        System.out.println("Reuniendo: pasta, agua, sal, aceite");
+        logger.info("Reuniendo: pasta, agua, sal, aceite");
         if (withSauce) {
-            System.out.println("También reuniendo ingredientes para salsa");
+            logger.info("También reuniendo ingredientes para salsa");
         }
     }
 
     @Override
     protected void prepareIngredients() {
-        System.out.println("Midiendo porciones de pasta");
+        logger.info("Midiendo porciones de pasta");
     }
 
     @Override
     protected void cook() {
-        System.out.println("Hirviendo agua y cocinando pasta por 8-10 minutos");
+        logger.info("Hirviendo agua y cocinando pasta por 8-10 minutos");
         if (withSauce) {
-            System.out.println("Preparando salsa simultáneamente");
+            logger.info("Preparando salsa simultáneamente");
         }
     }
 
@@ -35,11 +39,11 @@ public class PastaPreparation extends MealPreparation {
 
     @Override
     protected void addCondiments() {
-        System.out.println("Agregando salsa y queso parmesano");
+        logger.info("Agregando salsa y queso parmesano");
     }
 
     @Override
     protected void serve() {
-        System.out.println("Sirviendo pasta caliente en plato hondo");
+        logger.info("Sirviendo pasta caliente en plato hondo");
     }
 }
