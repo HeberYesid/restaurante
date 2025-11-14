@@ -110,6 +110,12 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <!-- Excluir Main.java de la instrumentación -->
+                                <exclude>com/example/Main.class</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                     
                     <!-- Generar reporte después de ejecutar tests -->
@@ -119,6 +125,12 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <!-- Excluir Main.java del reporte de cobertura -->
+                                <exclude>com/example/Main.class</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
